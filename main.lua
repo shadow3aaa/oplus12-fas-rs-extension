@@ -99,11 +99,11 @@ API_VERSION = 0
 -- Print a debug level log to /sdcard/Android/fas-rs/fas_log.txt,
 -- This level is not enabled in the release build of fas-rs.
 --
-set_sf_backdoor(2)
-
 function set_sf_backdoor(level)
-    os.execute("service call SurfaceFlinger 1035 " + tostring(level))
+    os.execute(string.format("service call SurfaceFlinger 1035 i32 %u", level))
 end
+
+set_sf_backdoor(2)
 
 function load_fas(pid, pkg)
     set_sf_backdoor(3)
