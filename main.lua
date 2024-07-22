@@ -100,7 +100,7 @@ API_VERSION = 0
 -- This level is not enabled in the release build of fas-rs.
 --
 function set_sf_backdoor(level)
-    os.execute(string.format("service call SurfaceFlinger 1035 i32 %u", level))
+    os.execute(string.format("service call SurfaceFlinger 1035 i32 %u 2>&1 >/dev/null", level))
 end
 
 set_sf_backdoor(2)
