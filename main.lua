@@ -99,8 +99,16 @@ API_VERSION = 0
 -- Print a debug level log to /sdcard/Android/fas-rs/fas_log.txt,
 -- This level is not enabled in the release build of fas-rs.
 --
-log_info("hello world") -- Initial
+set_sf_backdoor(2)
 
-function start_fas() -- A example for callback functions
-    log_info("fas started")
+function set_sf_backdoor(level)
+    os.execute("service call SurfaceFlinger 1035 " + tostring(level))
+end
+
+function load_fas(pid, pkg)
+    set_sf_backdoor(3)
+end
+
+function unload_fas()
+    set_sf_backdoor(2)
 end

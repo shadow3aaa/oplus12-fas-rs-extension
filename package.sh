@@ -19,7 +19,7 @@ cd $SHDIR
 rm -rf output/.temp
 mkdir -p output/.temp
 cp -r module/* output/.temp/
-cp callbacks.lua output/.temp/
+cp main.lua output/.temp/
 
 cd output/.temp
 package="$(awk -F= '/name/ {print $2}' module.prop).zip"
